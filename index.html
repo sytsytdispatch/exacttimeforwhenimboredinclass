@@ -4,28 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Display</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #282c34;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-        #time {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        button, select {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="time">Loading...</div>
@@ -41,28 +20,6 @@
         <option value="Australia/Sydney">Sydney Time</option>
     </select>
 
-    <script>
-        let militaryTime = true;
-        let timeZone = 'UTC';
-
-        function updateTime() {
-            const now = new Date();
-            const options = { timeZone, hour12: !militaryTime, hour: '2-digit', minute: '2-digit', second: '2-digit', fractionalSecondDigits: 3 };
-            const formatter = new Intl.DateTimeFormat('en-US', options);
-            const formattedTime = formatter.format(now);
-            document.getElementById('time').textContent = formattedTime;
-        }
-
-        document.getElementById('toggleFormat').addEventListener('click', () => {
-            militaryTime = !militaryTime;
-            document.getElementById('toggleFormat').textContent = militaryTime ? 'Switch to AM/PM' : 'Switch to Military Time';
-        });
-
-        document.getElementById('timezoneSelect').addEventListener('change', (event) => {
-            timeZone = event.target.value;
-        });
-
-        setInterval(updateTime, 10); // Update time every 10 milliseconds
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
